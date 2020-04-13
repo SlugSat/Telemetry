@@ -171,6 +171,9 @@ int main(void)
 	snprintf((char *)Msg1, sizeof(Msg1), "\r\nTest: read from register 0x%x: 0x%x\r\n", address, readValue);
 	HAL_UART_Transmit(&huart2, (uint8_t *) Msg1, sizeof(Msg1), 1);
 	
+	snprintf((char *)Msg1, sizeof(Msg1), "\r\nTest: read from register should be '0xb', check init function if not \r\n");
+	HAL_UART_Transmit(&huart2, (uint8_t *) Msg1, sizeof(Msg1), 1);
+	
 	// Write to register
   readValue = ReadWriteExtendedReg (CC1200_WRITE_BIT, address, value); 
 	
@@ -178,6 +181,9 @@ int main(void)
 	readValue = ReadWriteExtendedReg (CC1200_READ_BIT, address, value);  
 		
 	snprintf((char *)Msg1, sizeof(Msg1), "\r\nTest: read from register 0x%x after writing to the register: 0x%x\r\n", address, readValue);
+	HAL_UART_Transmit(&huart2, (uint8_t *) Msg1, sizeof(Msg1), 1);
+	
+	snprintf((char *)Msg1, sizeof(Msg1), "\r\nTest: read from register should be '0xa', check write function if not \r\n");
 	HAL_UART_Transmit(&huart2, (uint8_t *) Msg1, sizeof(Msg1), 1);
 	#endif
 	

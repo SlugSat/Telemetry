@@ -1,0 +1,264 @@
+
+#define IOCFG2 			0x0001
+#define DEVIATION_M 	0x000A
+#define MODCFG_DEV_E 	0x000B
+#define DCFILT_CFG 		0x000C
+#define PREAMBLE_CFG0 	0x000E
+#define IQIC 			0x000F
+#define CHAN_BW 		0x0010
+#define MDMCFG1 		0x0011
+#define MDMCFG0 		0x0012
+#define SYMBOL_RATE2 	0x0013
+#define SYMBOL_RATE1 	0x0014
+#define SYMBOL_RATE0 	0x0015
+#define AGC_REF 		0x0016
+#define AGC_CS_THR 		0x0017
+#define AGC_CFG1 		0x001B
+#define AGC_CFG0 		0x001C
+#define FIFO_CFG 		0x001D
+#define FS_CFG 			0x0020
+#define PKT_CFG2 		0x0026
+#define PKT_LEN 		0x002E
+#define IF_MIX_CFG 		0x2F00
+#define FREQOFF_CFG 	0x2F01
+#define MDMCFG2 		0x2F05
+#define FREQ2 			0x2F0C
+#define IF_ADC1 		0x2F10
+#define IF_ADC0 		0x2F11
+#define FS_DIG1 		0x2F12
+#define FS_DIG0 		0x2F13
+#define FS_CAL1 		0x2F16
+#define FS_CAL0 		0x2F17
+#define FS_DIVTWO 		0x2F19
+#define FS_DSM0 		0x2F1B
+#define FS_DVC0 		0x2F1D
+#define FS_PFD 			0x2F1F
+#define FS_PRE 			0x2F20
+#define FS_REG_DIV_CML 	0x2F21
+#define FS_SPARE 		0x2F22
+#define FS_VCO0 		0x2F27
+#define XOSC5 			0x2F32
+#define XOSC1 			0x2F36
+#define PARTNUMBER 		0x2F8F
+#define PARTVERSION 	0x2F90
+#define MODEM_STATUS1 	0x2F92
+
+
+
+
+
+IOCFG2
+0x0001
+0x06
+GPIO2 IO Pin Configuration
+
+DEVIATION_M
+0x000A
+0xD1
+Frequency Deviation Configuration
+
+MODCFG_DEV_E
+0x000B
+0x00
+Modulation Format and Frequency Deviation Configur..
+
+DCFILT_CFG
+0x000C
+0x5D
+Digital DC Removal Configuration
+
+PREAMBLE_CFG0
+0x000E
+0x8A
+Preamble Detection Configuration Reg. 0
+
+IQIC
+0x000F
+0xCB
+Digital Image Channel Compensation Configuration
+
+CHAN_BW
+0x0010
+0xA6
+Channel Filter Configuration
+
+MDMCFG1
+0x0011
+0x60
+General Modem Parameter Configuration Reg. 1
+
+MDMCFG0
+0x0012
+0x05
+General Modem Parameter Configuration Reg. 0
+
+SYMBOL_RATE2
+0x0013
+0x3F
+Symbol Rate Configuration Exponent and Mantissa [1..
+
+SYMBOL_RATE1
+0x0014
+0x75
+Symbol Rate Configuration Mantissa [15:8]
+
+SYMBOL_RATE0
+0x0015
+0x10
+Symbol Rate Configuration Mantissa [7:0]
+
+AGC_REF
+0x0016
+0x20
+AGC Reference Level Configuration
+
+AGC_CS_THR
+0x0017
+0xEC
+Carrier Sense Threshold Configuration
+
+AGC_CFG1
+0x001B
+0x51
+Automatic Gain Control Configuration Reg. 1
+
+AGC_CFG0
+0x001C
+0x87
+Automatic Gain Control Configuration Reg. 0
+
+FIFO_CFG
+0x001D
+0x00
+FIFO Configuration
+
+FS_CFG
+0x0020
+0x14
+Frequency Synthesizer Configuration
+
+PKT_CFG2
+0x0026
+0x00
+Packet Configuration Reg. 2
+
+PKT_LEN
+0x002E
+0x13
+Packet Length Configuration
+
+IF_MIX_CFG
+0x2F00
+0x1C
+IF Mix Configuration
+
+FREQOFF_CFG
+0x2F01
+0x22
+Frequency Offset Correction Configuration
+
+MDMCFG2
+0x2F05
+0x0C
+General Modem Parameter Configuration Reg. 2
+
+FREQ2
+0x2F0C
+0x57
+Frequency Configuration [23:16]
+
+IF_ADC1
+0x2F10
+0xEE
+Analog to Digital Converter Configuration Reg. 1
+
+IF_ADC0
+0x2F11
+0x10
+Analog to Digital Converter Configuration Reg. 0
+
+FS_DIG1
+0x2F12
+0x07
+Frequency Synthesizer Digital Reg. 1
+
+FS_DIG0
+0x2F13
+0xAF
+Frequency Synthesizer Digital Reg. 0
+
+FS_CAL1
+0x2F16
+0x40
+Frequency Synthesizer Calibration Reg. 1
+
+FS_CAL0
+0x2F17
+0x0E
+Frequency Synthesizer Calibration Reg. 0
+
+FS_DIVTWO
+0x2F19
+0x03
+Frequency Synthesizer Divide by 2
+
+FS_DSM0
+0x2F1B
+0x33
+FS Digital Synthesizer Module Configuration Reg. 0
+
+FS_DVC0
+0x2F1D
+0x17
+Frequency Synthesizer Divider Chain Configuration ..
+
+FS_PFD
+0x2F1F
+0x00
+Frequency Synthesizer Phase Frequency Detector Con..
+
+FS_PRE
+0x2F20
+0x6E
+Frequency Synthesizer Prescaler Configuration
+
+FS_REG_DIV_CML
+0x2F21
+0x1C
+Frequency Synthesizer Divider Regulator Configurat..
+
+FS_SPARE
+0x2F22
+0xAC
+Frequency Synthesizer Spare
+
+FS_VCO0
+0x2F27
+0xB5
+FS Voltage Controlled Oscillator Configuration Reg..
+
+XOSC5
+0x2F32
+0x0E
+Crystal Oscillator Configuration Reg. 5
+
+XOSC1
+0x2F36
+0x03
+Crystal Oscillator Configuration Reg. 1
+
+PARTNUMBER
+0x2F8F
+0x20
+Part Number
+
+PARTVERSION
+0x2F90
+0x11
+Part Revision
+
+MODEM_STATUS1
+0x2F92
+0x10
+Modem Status Reg. 1
+

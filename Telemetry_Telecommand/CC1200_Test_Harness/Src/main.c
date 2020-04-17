@@ -48,8 +48,9 @@
 #define RESET GPIO_PIN_8
 
 // Tests
-#define READ_WRITE_TEST
+//#define READ_WRITE_TEST
 //#define COMMAND_STROBE_TEST
+#define SPI_FUNCTION_TEST
 
 
 /* USER CODE END PD */
@@ -156,6 +157,12 @@ int main(void)
 	///////////////////////////////////////////////////////////////////////
   // Test reading and writing to a configuration register
 	///////////////////////////////////////////////////////////////////////
+	#ifdef SPI_FUNCTION_TEST
+	for(int i =0; i>20;i++){
+		HAL_SPI_Transmit(&hspi1,CC1200_WRITE_BIT, 1, i);
+	}
+	while(1)
+	#endif
 	
 	#ifdef READ_WRITE_TEST
 	

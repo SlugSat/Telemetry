@@ -158,10 +158,15 @@ int main(void)
   // Test reading and writing to a configuration register
 	///////////////////////////////////////////////////////////////////////
 	#ifdef SPI_FUNCTION_TEST
-	for(int i =0; i>20;i++){
-		HAL_SPI_Transmit(&hspi1,CC1200_WRITE_BIT, 1, i);
+	
+	uint8_t testString[] = {0x53, 0x6c, 0x75, 0x67, 0x53, 0x61, 0x74}; //"SlugSat" in hex	
+//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);
+//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+	while(1){
+			HAL_SPI_Transmit(&hspi1, testString, 7, 100);			
+			HAL_Delay(100);
+			HAL_GPIO_TogglePin(GPIOA, RESET);
 	}
-	while(1)
 	#endif
 	
 	#ifdef READ_WRITE_TEST

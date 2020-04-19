@@ -160,8 +160,6 @@ int main(void)
 	#ifdef SPI_FUNCTION_TEST
 	
 	uint8_t testString[] = {0x53, 0x6c, 0x75, 0x67, 0x53, 0x61, 0x74}; //"SlugSat" in hex	
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1);
-//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
 	while(1){
 			HAL_SPI_Transmit(&hspi1, testString, 7, 100);			
 			HAL_Delay(100);

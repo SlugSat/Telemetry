@@ -48,9 +48,10 @@
 #define RESET GPIO_PIN_8
 
 // Tests
-#define READ_WRITE_TEST
+//#define READ_WRITE_TEST
 //#define COMMAND_STROBE_TEST
 //#define SPI_FUNCTION_TEST
+#define INIT_TEST
 
 
 /* USER CODE END PD */
@@ -97,9 +98,28 @@ void CC1200_INIT(void);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+	#ifdef INIT_TEST
+			HAL_Init();
+			SystemClock_Config();
+		  MX_GPIO_Init();
+			MX_SPI1_Init();
+			MX_USART2_UART_Init();
+	
+			while(1){
+				HAL_GPIO_WritePin(GPIOA, CSN, GPIO_PIN_SET);
 
-  /* USER CODE END 1 */
+				//Set reset high, low, high to begin
+				HAL_GPIO_WritePin(GPIOA, RESET, GPIO_PIN_SET);
+				HAL_Delay(10);
+				HAL_GPIO_WritePin(GPIOA, RESET, GPIO_PIN_RESET);
+				HAL_Delay(10);
+				HAL_GPIO_WritePin(GPIOA, RESET, GPIO_PIN_SET);
+				HAL_Delay(10);
+				CC1200_INIT();
+				HAL_Delay(10);
+				ReadWriteExtendedReg(CC1200_READ_BIT, CC1200_IOCFG2, 0);
+			}
+	#endif
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -174,6 +194,7 @@ int main(void)
 	the value of this register to value 0xa.  Before the write this register should
 	be reset to 0xb.
 	*/
+	CC1200_INIT();
 	while(1){
 		// Read initial reg value
 		readValue = ReadWriteExtendedReg (CC1200_READ_BIT, address, value); //(0x80,0x2f02,0x0a)

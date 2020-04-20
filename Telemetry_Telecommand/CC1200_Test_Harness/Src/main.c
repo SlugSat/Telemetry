@@ -176,7 +176,7 @@ int main(void)
 	*/
 	while(1){
 		// Read initial reg value
-		readValue = ReadWriteExtendedReg (CC1200_READ_BIT, address, value); 
+		readValue = ReadWriteExtendedReg (CC1200_READ_BIT, address, value); //(0x80,0x2f02,0x0a)
 			
 		snprintf((char *)Msg1, sizeof(Msg1), "\r\nTest: read from register 0x%x: 0x%x\r\n", address, readValue);
 		HAL_UART_Transmit(&huart2, (uint8_t *) Msg1, sizeof(Msg1), 1);
@@ -574,7 +574,7 @@ uint8_t ReadWriteExtendedReg (uint8_t accessType, uint16_t address, uint8_t valu
 			while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
 		}
 		HAL_SPI_Transmit(&hspi1,0x0, 1, 10); // Transmit 0 for read
-		HAL_SPI_Receive(&hspi1, &readValue, 1, 10); // Read value
+		HAL_SPI_Receive(&hspi1, &readValue, 1, 1000); // Read value
 			
 			
 	} else { // Write to address

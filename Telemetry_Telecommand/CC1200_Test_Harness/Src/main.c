@@ -51,7 +51,8 @@
 //#define READ_WRITE_TEST
 //#define COMMAND_STROBE_TEST
 //#define SPI_FUNCTION_TEST
-#define INIT_TEST
+//#define INIT_TEST
+#define SMARTRF_MIMIC_TEST
 
 
 /* USER CODE END PD */
@@ -158,6 +159,8 @@ int main(void)
 	HAL_GPIO_WritePin(GPIOA, RESET, GPIO_PIN_SET);
 	HAL_Delay(10);
 	
+	CC1200_INIT();
+	
 	///////////////////////////////////////////////////////////////////////
 	// Start the test
 	///////////////////////////////////////////////////////////////////////
@@ -184,6 +187,47 @@ int main(void)
 			HAL_SPI_Transmit(&hspi1, testString, 7, 100);			
 			HAL_Delay(100);
 			HAL_GPIO_TogglePin(GPIOA, RESET);
+	}
+	#endif
+	#ifdef SMARTRF_MIMIC_TEST
+	
+	//get chip information
+	uint8_t testString0[] = {0xf0 , 0x00 , 0xf1, 0x00};
+	uint8_t testString1[] = {0xef, 0x8f, 0x00, 0x00};
+	uint8_t testString2[] = {0x40, 0x31, 0x31};
+	uint8_t testString3[] = {0x6f, 0x04, 0x00};
+	uint8_t testString4[] = {0x3d};
+	uint8_t read;
+	while(1){
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_SPI_Transmit(&hspi1, testString0, 4, 100);
+		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_Delay(1);
+			
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_SPI_Transmit(&hspi1, testString1, 4, 100);
+		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_Delay(1);
+			
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_SPI_Transmit(&hspi1, testString2, 3, 100);
+		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_Delay(1);
+			
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_SPI_Transmit(&hspi1, testString3, 3, 100);
+		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_Delay(1);
+			
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_SPI_Transmit(&hspi1, testString4, 1, 100);
+		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_Delay(10);			
 	}
 	#endif
 	

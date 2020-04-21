@@ -117,7 +117,7 @@ int main(void)
 				HAL_Delay(10);
 				CC1200_INIT();
 				HAL_Delay(10);
-				ReadWriteExtendedReg(CC1200_READ_BIT, CC1200_IOCFG2, 0);
+				ReadWriteExtendedReg(CC1200_READ_BIT, CC1200_IOCFG2, 1);
 			}
 	#endif
 

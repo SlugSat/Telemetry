@@ -192,11 +192,11 @@ int main(void)
 	#ifdef SMARTRF_MIMIC_TEST
 	
 	//get chip information
-	uint8_t testString0[] = {0xf0 , 0x00 , 0xf1, 0x00};
-	uint8_t testString1[] = {0xef, 0x8f, 0x00, 0x00};
-	uint8_t testString2[] = {0x40, 0x31, 0x31};
-	uint8_t testString3[] = {0x6f, 0x04, 0x00};
-	uint8_t testString4[] = {0x3d};
+	uint8_t testString0[] = {0x2f, 0x8f, 0x00, 0x00};
+	uint8_t testString1[] = {0x3f, 0x8f, 0x00, 0x00};
+	uint8_t testString2[] = {0xaf, 0x8f, 0x00, 0x00};
+	uint8_t testString3[] = {0xef, 0x8f, 0x00, 0x00};
+	//uint8_t testString4[] = {0x3d};
 	uint8_t read;
 	while(1){
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
@@ -212,21 +212,22 @@ int main(void)
 		HAL_Delay(1);
 			
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, testString2, 3, 100);
+		HAL_SPI_Transmit(&hspi1, testString2, 4, 100);
 		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 		HAL_Delay(1);
 			
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, testString3, 3, 100);
+		HAL_SPI_Transmit(&hspi1, testString3, 4, 100);
 		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 		HAL_Delay(1);
-			
+		/*	
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
 		HAL_SPI_Transmit(&hspi1, testString4, 1, 100);
 		while (HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+			*/
 		HAL_Delay(10);			
 	}
 	#endif

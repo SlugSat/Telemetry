@@ -12,7 +12,7 @@ CC1200 Driver for the STM32 Microcontroller
 [//]: # (############################### Introduction ############################)
 ## Introduction
 Contained in this project are the basic driver files for communicating
-with and controlling the CC1200 transceiver chip. Below is a list of all the files that I have personally written:
+with and controlling the CC1200 transceiver chip. Below is a list of all the main driver files:
 
 - *cc1200.h/.c*
 	- Main SPI implementation for interacting with the cc1200
